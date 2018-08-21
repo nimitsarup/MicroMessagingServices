@@ -1,0 +1,24 @@
+{
+  "name": "microservice",
+  "version": "1.0.0",
+  "description": "Micro Messaging Services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nimitsarup/MicroMessagingServices.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nimitsarup/MicroMessagingServices/issues"
+  },
+  "homepage": "https://github.com/nimitsarup/MicroMessagingServices#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "moleculer": "^0.13.2",
+    "zmq": "^2.15.3"
+  }
+}
