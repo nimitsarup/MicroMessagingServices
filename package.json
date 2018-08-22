@@ -19,6 +19,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "moleculer": "^0.13.2",
+    "moleculer-repl": "^0.5.2",
     "zmq": "^2.15.3"
   }
 }

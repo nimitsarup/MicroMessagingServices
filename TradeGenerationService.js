@@ -1,9 +1,17 @@
-// ACQUIRE AND BIND TO SOCKET
+const { broker } = require('./ServiceBrokerDefinition');
 const socket = require(`zmq`).socket(`push`);
-socket.bindSync(`tcp://127.0.0.1:3000`);
 
-var counter = 0;
+broker.createService({
+    name: "TradeGenerationService",
 
-setInterval(function () {	
-    socket.send(`${counter++}` + " Commodity: 'GOLD', UnitPrice: '100.23', Currency: 'RUBLE', Quantity: '100'");  
-}, 500);
+    started() {
+        socket.bindSync(`tcp://127.0.0.1:3000`);
+        var counter = 0;
+        setInterval(function () {	
+            console.log(`Sending ${counter}`);
+            socket.send(`${counter++}` + " Commodity: 'GOLD', UnitPrice: '100.23', Currency: 'RUBLE', Quantity: '100'");  
+        }, 1000);
+    }
+});
+
+broker.start().then(() => broker.repl());
