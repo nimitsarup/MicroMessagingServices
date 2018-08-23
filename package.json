@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/nimitsarup/MicroMessagingServices#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "crypto": "^1.0.1",
     "moleculer": "^0.13.2",
+    "moleculer-db": "^0.7.5",
     "moleculer-repl": "^0.5.2",
     "zmq": "^2.15.3"
   }

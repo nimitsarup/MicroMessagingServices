@@ -4,6 +4,7 @@ const broker = new ServiceBroker({
     namespace: "ducatur",
     nodeID: "NODE-" + process.pid,
     requestTimeout: 1000,
+    transporter: "TCP",
 
     circuitBreaker: {
         enabled: false,

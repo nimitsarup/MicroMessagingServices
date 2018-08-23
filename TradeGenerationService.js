@@ -9,7 +9,9 @@ broker.createService({
         var counter = 0;
         setInterval(function () {	
             console.log(`Sending ${counter}`);
-            socket.send(`${counter++}` + " Commodity: 'GOLD', UnitPrice: '100.23', Currency: 'RUBLE', Quantity: '100'");  
+            broker.emit("StatEvent.TradeGeneratedEvent", { id: counter, time: Date.now() }, ["StatsGatheringService"]);
+
+            socket.send(`${counter++}` + " Commodity: 'GOLD', UnitPrice: '100.23', Currency: 'RUBLE', Quantity: '100'");            
         }, 1000);
     }
 });

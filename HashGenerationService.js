@@ -18,6 +18,8 @@ broker.createService({
             var seqNumCheck = msg.toString().split(' ')[0];
             
             var sha256 = crypto.createHash('sha256').update(msg).digest("hex");
+            broker.emit("StatEvent.HashGeneratedEvent", { id: seqNumCheck, time: Date.now() }, ["StatsGatheringService"]);
+
             pushSocket.send(seqNumCheck + "-" + sha256);
         });
     }
