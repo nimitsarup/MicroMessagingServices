@@ -6,11 +6,18 @@ broker.createService({
 
     started() {
         setInterval(() => {
-            broker.call("TradeGenerationService.reportStats").then((args) => console.log(chalk.red.bold(JSON.stringify(args))));
-            broker.call("HashGenerationService.reportStats").then((args) => console.log(chalk.yellow(JSON.stringify(args))));
+            try {
+                broker.call("TradeGenerationService.reportStats").then((args) => console.log(chalk.red.bold("TradeGenerationService - " + JSON.stringify(args))));
+                broker.call("HashGenerationService.reportStats").then((args) => console.log(chalk.yellow("HashGenerationService - " + JSON.stringify(args))));
+                broker.call("HashRecordingService.reportStats").then((args) => console.log(chalk.green("HashRecordingService - " + JSON.stringify(args))));
+            }
+            catch(err) {}
+            console.log("\n");
         }, 5000);
     },
 
+    // Event based design is not very performant
+    
     /*events: {
 		"StatEvent.TradeGeneratedEvent"(data) {
             //console.log(chalk.yellow.bold(`Trade ${data.id} generated at ${data.time}`));

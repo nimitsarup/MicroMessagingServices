@@ -3,7 +3,7 @@ const {ServiceBroker} = require('moleculer');
 const broker = new ServiceBroker({
     namespace: "ducatur",
     nodeID: "NODE-" + process.pid,
-    requestTimeout: 1000,
+    requestTimeout: 100000,
     transporter: "TCP",
 
     circuitBreaker: {
