@@ -1,0 +1,5 @@
+{
+    "TradeGenerationTime" : "1u",
+    "StatsCollectionTimer" : 5000,
+    "ZeroMqIpPort" : "tcp://127.0.0.1:3000"
+}
