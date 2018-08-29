@@ -32,14 +32,15 @@ broker.createService({
             broker.call("HashRecordingService.create", { _id: parts[0], hash: parts[1] })
             .then(() => {                    
                     var timeTaken = MicrosecondsTimer.now() - parts[0];
-                    if (_this.maxDuration == 0) _this.maxDuration = timeTaken;
-                    if (_this.minDuration == 0) _this.minDuration = timeTaken;
                     
+                    if (_this.minDuration == 0) _this.minDuration = timeTaken;
+                    if (_this.maxDuration == 0) _this.maxDuration = timeTaken;
+                                       
                     if(timeTaken < _this.minDuration) _this.minDuration = timeTaken;
-                    if(timeTaken > _this.maxDuration) _this.maxDuration = timeTaken;
+                    if(timeTaken > _this.minDuration && (timeTaken < (10 * _this.minDuration))) _this.maxDuration = timeTaken;
 
                     // Avoid outliers (spikes)
-                    if(_this.maxDuration > (10 * _this.minDuration)) _this.maxDuration = 0;
+                    //if(_this.maxDuration > (10 * _this.minDuration)) _this.maxDuration = _this.minDuration;
                 });
         });
     }

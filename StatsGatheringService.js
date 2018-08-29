@@ -10,6 +10,7 @@ broker.createService({
             try {
                 broker.call("TradeGenerationService.reportStats").then((args) => console.log(chalk.red.bold("TradeGenerationService - " + JSON.stringify(args))));
                 
+                // Loop through all instances of the recording services and fetch stats
                 const endpoints = broker.registry.getActionEndpoints("HashRecordingService.reportStats");
                 for(var i=0; i < endpoints.count(); i++)
                 {
